@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Library</h1>
+<table>
+<tr>
+<th>Book Name</th>
+<th>Book Cover</th>
+<th>Review/Ratings</th>
+<th>Options</th>
+</tr>
+<tbody>
+
+</tbody>
+</table>
+<!-- To hide the form Initially we use display:none property -->
+<form style="display:none" id= "myform" onsubmit="" action="">
+<h2>Enter All the details</h2>
+<label for id="name"> Book Name </label>
+<input type="text" id="name" name="bookname" required> <br><br>
+<label for id="coverimage">Upload CoverImage </label>
+<input type="file" id="coverimage" name="coverimage"> <br><br>
+<label for id="revrate">Review/Ratings</label>
+<input type="textbox" style="width:400px;height:40px" id="revrate" name="revrate"> <br><br>
+<button>Submit</button>
+</form>
+<button onclick="openform()">ADD</button>
+<script>
+function openform()
+{
+	const form=document.getElementById("myform");
+	form.style.display=(form.style.display==="none"|| form.style.display==="")?"block":"none";
+}
+</script>
+</body>
+</html>

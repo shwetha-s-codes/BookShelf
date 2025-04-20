@@ -28,7 +28,7 @@ public class SignUpServlet extends HttpServlet {
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("username", uname);
-			response.sendRedirect("book.jsp");
+			response.sendRedirect("bookhome.html");
 			
 			
 		}
