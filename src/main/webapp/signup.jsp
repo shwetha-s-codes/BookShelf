@@ -38,6 +38,8 @@
     <div id="login">
         <center>
             <br>
+            <label for= "email">Email</label>
+            <input type="email" placeholder="enter your email" name="email"><br><br>
         <label for="Username">Username</label>
         <input type="text" placeholder="enter your name" name="uname"><br><br>
         <label for="Password">Password</label>

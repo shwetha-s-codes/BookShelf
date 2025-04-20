@@ -17,7 +17,7 @@ public class LoginDao {
 		
 		try
 		{
-		Class.forName("com.mysql.cj.jdbc.connector");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con=DriverManager.getConnection(url,username,password);
 		PreparedStatement st = con.prepareStatement(query);
 		st.setString(1,uname);
