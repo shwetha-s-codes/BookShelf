@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="library.css">
 </head>
 <body>
 <h1>Library</h1>
-<table>
+<table id="infoTable">
 <tr>
 <th>Book Name</th>
 <th>Book Cover</th>
@@ -17,8 +18,11 @@
 
 </tbody>
 </table>
-<!-- To hide the form Initially we use display:none property -->
-<form style="display:none" id= "myform" onsubmit="" action="">
+<!-- a modal is used to create the form as a pop-up  -->
+<div id="popupForm" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeForm()">&times;</span>
+<form  id= "myform" onsubmit="addToTable();return false;" action="">
 <h2>Enter All the details</h2>
 <label for id="name"> Book Name </label>
 <input type="text" id="name" name="bookname" required> <br><br>
@@ -28,13 +32,10 @@
 <input type="textbox" style="width:400px;height:40px" id="revrate" name="revrate"> <br><br>
 <button>Submit</button>
 </form>
-<button onclick="openform()">ADD</button>
-<script>
-function openform()
-{
-	const form=document.getElementById("myform");
-	form.style.display=(form.style.display==="none"|| form.style.display==="")?"block":"none";
-}
-</script>
+</div>
+</div>
+<button onclick="openForm()">ADD</button>
+<script src="library.js"></script>
+
 </body>
 </html>
