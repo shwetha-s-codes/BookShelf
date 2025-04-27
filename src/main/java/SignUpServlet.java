@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import com.book.FetchUserIdDao;
 import com.book.LoginDao;
 import com.book.SignUpDao;
 
@@ -27,8 +28,21 @@ public class SignUpServlet extends HttpServlet {
 		if(ld.check(uname, pass, email))
 		{
 			HttpSession session=request.getSession();
-			session.setAttribute("username", uname);
-			response.sendRedirect("bookhome.html");
+			FetchUserIdDao fd=new FetchUserIdDao();
+			int id= fd.userId(uname,pass,email); //Acessing User ID which is assigned by database
+			
+			if(id!=-1)
+			{
+				session.setAttribute("id", id);
+				System.out.println(id);
+				response.sendRedirect("bookhome.html");
+			}
+			else
+			{
+				PrintWriter out=response.getWriter();
+				out.println("Something went wrong ");
+				//response.sendRedirect("index.html");
+			}
 			
 			
 		}

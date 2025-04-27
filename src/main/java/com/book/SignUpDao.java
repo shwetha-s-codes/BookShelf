@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class SignUpDao {
 	String query="select * from login where email=?";//Validating the email
-	String insertQuery="insert into login values(?,?,?)";
+	String insertQuery="insert into login (uname,password,email)values(?,?,?)";
 	String url="jdbc:mysql://localhost:3306/BookManagementSystemDB";
 	String username="root";
 	String password="Shwetha@29";
@@ -19,10 +19,7 @@ public class SignUpDao {
 		{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con=DriverManager.getConnection(url,username,password);
-		if(con!=null)
-			System.out.println("Connection Established Successfully");
-		else
-			System.out.println("Connection is not established");
+		
 		PreparedStatement pt1=con.prepareStatement(query);
 		pt1.setString(1, email);
 		ResultSet rs=pt1.executeQuery();
@@ -31,14 +28,16 @@ public class SignUpDao {
 			System.out.println("Email Already Exists");
 			return false;
 		}
-		
-		
+		else
+		{
+		   
 			PreparedStatement pt2=con.prepareStatement(insertQuery);
 			pt2.setString(1, uname);
 			pt2.setString(2, pass);
 			pt2.setString(3, email);
 			pt2.executeUpdate();
-			
+			System.out.println("Data Inserted Sucessfully");
+		}
 			
 		
 		

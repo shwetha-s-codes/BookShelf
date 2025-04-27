@@ -4,6 +4,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 import java.io.File;
@@ -14,6 +15,8 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+import com.book.BookInfoDao;
 
 @MultipartConfig // Annotation for Informing file uploads
 @WebServlet("/bookinfoServlet")
@@ -39,6 +42,7 @@ public class bookinfoServlet extends HttpServlet {
         // Save File to the server
         InputStream inputStream = null;
         FileOutputStream outputStream = null;
+        String FilePath=null;
         try {
             inputStream = filePart.getInputStream();
             File outputFile = new File(uploadDir + File.separator + fileName);
@@ -49,7 +53,7 @@ public class bookinfoServlet extends HttpServlet {
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
-            System.out.println("File uploaded successfully to: " + outputFile.getAbsolutePath());
+             FilePath= (String)outputFile.getAbsolutePath();
         } catch (IOException e) {
             e.printStackTrace();
             response.getWriter().write("Error while uploading file: " + e.getMessage());
@@ -60,5 +64,9 @@ public class bookinfoServlet extends HttpServlet {
 
         String author = request.getParameter("author"); // Accessing Author name
         String rating = request.getParameter("rating"); // Accessing Rating
+        HttpSession session=request.getSession();
+        int id=(Integer)session.getAttribute("id");
+        BookInfoDao bk=new BookInfoDao();
+        bk.insert(bookname, FilePath, author,rating,id);
     }
 }
