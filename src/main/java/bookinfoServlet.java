@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import com.book.BookInfoDao;
+import com.book.FetchBookId;
 
 @MultipartConfig // Annotation for Informing file uploads
 @WebServlet("/bookinfoServlet")
@@ -53,7 +54,7 @@ public class bookinfoServlet extends HttpServlet {
             while ((bytesRead = inputStream.read(buffer)) != -1) {
                 outputStream.write(buffer, 0, bytesRead);
             }
-             FilePath= (String)outputFile.getAbsolutePath();
+            
         } catch (IOException e) {
             e.printStackTrace();
             response.getWriter().write("Error while uploading file: " + e.getMessage());
@@ -67,6 +68,12 @@ public class bookinfoServlet extends HttpServlet {
         HttpSession session=request.getSession();
         int id=(Integer)session.getAttribute("id");
         BookInfoDao bk=new BookInfoDao();
-        bk.insert(bookname, FilePath, author,rating,id);
+        bk.insert(bookname, fileName, author,rating,id);
+        FetchBookId fd=new  FetchBookId();
+        int bookId=fd.fetch(id, bookname, author, rating) ;
+        if(bookId!=-1)
+        {
+        	session.setAttribute("bookId", bookId);
+        }
     }
 }
