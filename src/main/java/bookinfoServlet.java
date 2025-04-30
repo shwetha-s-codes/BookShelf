@@ -69,11 +69,6 @@ public class bookinfoServlet extends HttpServlet {
         int id=(Integer)session.getAttribute("id");
         BookInfoDao bk=new BookInfoDao();
         bk.insert(bookname, fileName, author,rating,id);
-        FetchBookId fd=new  FetchBookId();
-        int bookId=fd.fetch(id, bookname, author, rating) ;
-        if(bookId!=-1)
-        {
-        	session.setAttribute("bookId", bookId);
-        }
+       
     }
 }

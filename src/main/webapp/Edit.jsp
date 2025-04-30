@@ -27,22 +27,25 @@
      int bookId=Integer.parseInt(request.getParameter("bookId"));
      int id=(Integer)session.getAttribute("id");
      FetchToUpdate fd=new FetchToUpdate();
-     List<Book> book=new ArrayList<>();
-     book=fd.fetch(id,bookId);
+     //List<Book> book=new ArrayList<>();
+     Book b1=new Book();
+     b1= fd.fetch(id,bookId);
      
 %>
-<form  id= "myform"   action="EditServlet" method="POST" enctype="multipart/form-data"> <!--  Since we are dealing with files enctype should be mentioned--> 
+<form  id= "myform"   action="EditServlet" method="POST" enctype="multipart/form-data"> 
 <h2>Enter fields You want to Update</h2>
 <label for ="name">Book Name </label>
-<input type="text" id="name" name="bookname" > <br><br>
+<input type="text" id="name" name="bookname"  value=<%=b1.getBookName() %>> <br><br>
 <label for ="coverimage">Upload CoverImage </label>
-<input type="file" id="coverimage" name="coverimage"> <br><br>
-<label for ="author">Author</label>
-<input type="text"  id="author" name="author"> <br><br>
-<label for ="rating">Rating</label>
-<input type="text"  id="rating" name="rating"> <br><br>
+<input type="file" id="coverimage" name="coverimage" > <br><br>
+<input type="hidden" name="oldimagepath" value=<%=b1.getImgPath() %> %>
 
-<input type="hidden" name="oldbookname" value= "<%=Identifybookname %>">
+<label for ="author">Author</label>
+<input type="text"  id="author" name="author" value=<%=b1.getAuthor() %>> <br><br>
+<label for ="rating">Rating</label>
+<input type="text"  id="rating" name="rating" value=<%= b1.getRating()%>> <br><br>
+
+<input type="hidden" name="bookId" value= "<%=bookId%>">
 <button>Submit</button>
 </form>
 

@@ -6,6 +6,7 @@ public class Book {
 	String img_path;
 	String author;
 	String rating;
+	int bookId;
 	//Setters and Getters
 	
 	public void setBookName(String bookname)
@@ -60,6 +61,14 @@ public class Book {
 	{
 		
 		return rating;
+	}
+	public void setBookId(int bookId)
+	{
+		this.bookId=bookId;
+	}
+	public int  getBookId()
+	{
+		return bookId;
 	}
 
 }

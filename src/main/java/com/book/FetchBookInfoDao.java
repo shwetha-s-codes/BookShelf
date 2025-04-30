@@ -31,6 +31,7 @@ public class FetchBookInfoDao {
 			bk.setImgPath(rs.getString("img_path"));
 			bk.setAuthor(rs.getString("author"));
 			bk.setRating(rs.getString("rating"));
+			bk.setBookId(rs.getInt("bookid"));
 			book.add(bk); //Storing all the information in the List
 			
 		}

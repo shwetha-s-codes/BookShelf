@@ -38,8 +38,8 @@
 <%
     
     int id=(Integer)session.getAttribute("id");
-    int bookId=(Integer)session.getAttribute("bookId");
-    for(Book b:bookList)
+  
+    for(Book b:bookList) //Iterating all the books by the user
     {
 %>
 <tr>
@@ -48,8 +48,12 @@
 <td><%=b.getAuthor() %></td>
 <td><%=b.getRating() %></td>
 
-<td><a href="Edit.jsp?bookId=<%=bookId%>"><button>Edit</button></td>
-<td><a href="DeleteServlet"><button>Delete</button></td>
+<%
+    System.out.println(b.getAuthor());
+%>
+
+<td><a href="Edit.jsp?bookId=<%= b.getBookId()%>"><button value=<%=b.getBookId() %>>Edit</button> </a> </td>
+<td><a href="DeleteServlet?bookId=b.getBookId()"><button>Delete</button></td>
 </tr>
 <% } %>
 

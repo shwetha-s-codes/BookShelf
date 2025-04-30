@@ -8,14 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FetchToUpdate {
-	String query="select * from bookinfo where id=?and bookid=?";
+	String query="select * from bookinfo where id=? AND  bookid=?";
 	String url="jdbc:mysql://localhost:3306/BookManagementSystemDB";
 	String username="root";
 	String password="Shwetha@29" ;
-	public List<Book> fetch(int id,int bookId)
+	public Book fetch(int id,int bookId)
 	
 	{
-		List<Book> book=new ArrayList<>();
+		//List<Book> book=new ArrayList<>();
 		Book b1=new Book();
 		try
 		{
@@ -30,7 +30,12 @@ public class FetchToUpdate {
 		
 		if(rs.next())
 		{
-			b1.se
+			b1.setBookName(rs.getString("bookname"));
+			b1.setImgPath(rs.getString("img_Path"));
+			b1.setAuthor(rs.getString("author"));
+			b1.setRating(rs.getString("rating"));
+			
+			
 		}
 		
 		
@@ -41,7 +46,7 @@ public class FetchToUpdate {
 		{
 			e.printStackTrace();
 		}
-		return -1;
+		return b1;
 		
 	}
 
