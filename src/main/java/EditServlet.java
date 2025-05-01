@@ -1,6 +1,7 @@
 
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -15,10 +16,10 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.book.BookInfoDao;
+
 import com.book.UpdateInfoDao;
 
-
+@MultipartConfig 
 @WebServlet("/EditServlet")
 public class EditServlet extends HttpServlet {
 	 private static final String uploadDir = "D:/ImageUploads";
@@ -28,12 +29,14 @@ public class EditServlet extends HttpServlet {
 	        
 	    	// Accessing Bookname
 	    	String bookname = request.getParameter("bookname"); 
+	    	System.out.println(bookname);
 	        
 	        // Code to store the images in the Images folder
-	    	if(request.getPart("coverimage")!=null)
+	    	 Part filePart = request.getPart("coverimage");
+	    	if(filePart!=null&& filePart.getSize()>0)
 	    	{
 	    	
-	        Part filePart = request.getPart("coverimage");
+	       
 	        fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
 	        fileName = fileName.replaceAll("[^a-zA-Z0-9\\.\\-_]", "_");
 	        System.out.println("Sanitized file name: " + fileName);
@@ -67,15 +70,22 @@ public class EditServlet extends HttpServlet {
 	    	else
 	    	{
 	    		fileName=request.getParameter("oldimagepath");
+	    		if(fileName==null)
+	    		{
+	    			System.out.println("Error");
+	    		}
 	    	}
 	        
 	        
-	        
+	        System.out.println(fileName);
 	       
 
 	        String author = request.getParameter("author"); // Accessing Author name
+	        System.out.println(author);
 	        String rating = request.getParameter("rating"); // Accessing Rating
-	        int bookid=Integer.parseInt(request.getParameter("bookid"));
+	        System.out.println(rating);
+	        int bookid=Integer.parseInt(request.getParameter("bookId"));
+	        System.out.println(bookid);
 	        HttpSession session=request.getSession();
 	        int id=(Integer)session.getAttribute("id");
 	        UpdateInfoDao ud=new UpdateInfoDao();

@@ -53,6 +53,9 @@
 %>
 
 <td><a href="Edit.jsp?bookId=<%= b.getBookId()%>"><button value=<%=b.getBookId() %>>Edit</button> </a> </td>
+<%
+    System.out.println(b.getBookId());
+%>
 <td><a href="DeleteServlet?bookId=b.getBookId()"><button>Delete</button></td>
 </tr>
 <% } %>
