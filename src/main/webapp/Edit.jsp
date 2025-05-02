@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="form.css">
 </head>
 <body>
 <%
@@ -27,6 +28,7 @@
      b1= fd.fetch(id,bookId);
      
 %>
+<div id="form">
 <form  id= "myform"   action="EditServlet" method="POST" enctype="multipart/form-data"> 
 <h2>Enter fields You want to Update</h2>
 <label for ="name">Book Name </label>
@@ -44,6 +46,7 @@
 <input type="hidden" name="bookId" value= "<%=bookId%>">
 <button>Submit</button>
 </form>
+</div>
 
 </body>
 </html>
