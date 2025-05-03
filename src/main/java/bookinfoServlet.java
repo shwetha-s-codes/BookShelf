@@ -69,6 +69,7 @@ public class bookinfoServlet extends HttpServlet {
         int id=(Integer)session.getAttribute("id");
         BookInfoDao bk=new BookInfoDao();
         bk.insert(bookname, fileName, author,rating,id);
+        response.sendRedirect("bookhome.jsp");
        
     }
 }

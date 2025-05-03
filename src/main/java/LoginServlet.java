@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uname=request.getParameter("uname");
 		String pass=request.getParameter("pass");
 		String email=request.getParameter("email");
@@ -33,14 +33,14 @@ public class LoginServlet extends HttpServlet {
 			if(id!=-1)
 			{
 				session.setAttribute("id", id);
-				response.sendRedirect("bookhome.html");
-				System.out.println(id);
+				response.sendRedirect("bookhome.jsp");
+				
 			}
 			else
 			{
 				PrintWriter out=response.getWriter();
-				out.println("Something went wrong ");
-				response.sendRedirect("index.html");
+				
+				response.sendRedirect("index.jsp?error=Something+Went+Wrong");
 			}
 			
 		    
@@ -50,8 +50,8 @@ public class LoginServlet extends HttpServlet {
 		else
 		{
 			PrintWriter out=response.getWriter();
-			out.println("Something went wrong Either User name or Password is incorrect or Create Account");
-			response.sendRedirect("index.html");
+			
+			response.sendRedirect("index.jsp?error=Something went wrong Either User name or Password is incorrect or Create Account");
 			
 		}
 		

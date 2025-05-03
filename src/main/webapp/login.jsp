@@ -12,16 +12,16 @@
     <header>
         <center><h1 >Login</h1></center>
     </header>
-   <form action="LoginServlet">
+   <form action="LoginServlet" method="post">
     <div id="login">
         
             <br>
             <label for= "email">Email</label>
             <input type="email" placeholder="enter your email" name="email">
         <label for="Username">Username</label>
-        <input type="text" placeholder="enter your name" name="uname"><br><br>
+        <input type="text" placeholder="enter your name" name="uname" autocomplete="off"><br><br>
         <label for="Password">Password</label>
-        <input type="password" placeholder="enter password" name="pass"><br><br>
+        <input type="password" placeholder="enter password" name="pass" autocomplete="off"><br><br>
         <span>
        <button>Login</button>
     </span>

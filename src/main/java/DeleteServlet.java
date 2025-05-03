@@ -23,7 +23,7 @@ public class DeleteServlet extends HttpServlet {
 		int id=(int)session.getAttribute("id");
 		DeleteDao dd=new DeleteDao();
 		dd.deleteInfo(id,bookId);
-		response.sendRedirect("library.jsp");
+		response.sendRedirect("bookhome.jsp");
 	}
 
 }

@@ -90,6 +90,7 @@ public class EditServlet extends HttpServlet {
 	        int id=(Integer)session.getAttribute("id");
 	        UpdateInfoDao ud=new UpdateInfoDao();
 	        ud.update(bookname, fileName, author,rating,id,bookid);
+	        response.sendRedirect("bookhome.jsp");
 	       
 	    }
 

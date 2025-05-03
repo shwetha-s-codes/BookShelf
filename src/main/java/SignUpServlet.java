@@ -20,7 +20,7 @@ public class SignUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String uname=request.getParameter("uname");
 		String pass=request.getParameter("pass");
 		String email=request.getParameter("email");
@@ -35,13 +35,13 @@ public class SignUpServlet extends HttpServlet {
 			{
 				session.setAttribute("id", id);
 				System.out.println(id);
-				response.sendRedirect("bookhome.html");
+				response.sendRedirect("bookhome.jsp");
 			}
 			else
 			{
 				PrintWriter out=response.getWriter();
-				out.println("Something went wrong ");
-				//response.sendRedirect("index.html");
+			
+				response.sendRedirect("index.jsp?error=Something went wrong ");
 			}
 			
 			
@@ -49,8 +49,8 @@ public class SignUpServlet extends HttpServlet {
 		else
 		{
 			PrintWriter out=response.getWriter();
-			out.println("Email Already Exists");
-			//response.sendRedirect("index.html");
+			
+			response.sendRedirect("index.jsp?error=Email Already Exists");
 			
 		}
 		
