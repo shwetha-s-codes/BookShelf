@@ -56,7 +56,7 @@
 <%
     System.out.println(b.getBookId());
 %>
-<td><a href="DeleteServlet?bookId=b.getBookId()"><button>Delete</button></td>
+<td><a href="DeleteServlet?bookId=<%= b.getBookId()%>"><button>Delete</button></a></td>
 </tr>
 <% } %>
 
