@@ -7,10 +7,14 @@
 <li>Performed all the CRUD Operations</li>
 </list>
 <h2>Demo Iamges</h2>
-![img1](https://github.com/user-attachments/assets/bd6fe7ff-9478-40a4-a733-776179c0feb1)
-![img2](https://github.com/user-attachments/assets/d47f2244-3a91-4087-82ad-2a7f2967053d)
-![img3](https://github.com/user-attachments/assets/35283083-e05a-4db5-9639-262882fc202a)
-![img4](https://github.com/user-attachments/assets/ebab3997-6e9d-4e84-a0b8-cae12fa07200)
+
+
+![img1](https://github.com/user-attachments/assets/b1d4cb75-a5b0-42fb-9ae6-c3ad29b37097)
+![img2](https://github.com/user-attachments/assets/a0714df3-ecfb-477e-be32-0dea474af040)
+![img3](https://github.com/user-attachments/assets/9701b1ea-6be6-448e-b0da-f1893a3a1977)
+![img4](https://github.com/user-attachments/assets/0d758772-dca2-44f3-be4e-7602e48aec26)
+
+
 
 
 
